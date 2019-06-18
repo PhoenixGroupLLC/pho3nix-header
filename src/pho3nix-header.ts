@@ -75,7 +75,8 @@ export class Pho3nixHeader extends LitElement {
           animation-name: slideOutUp;
           animation-fill-mode: forwards;
         }
-        #wrapper.sticky {
+        :host([sticky]) #wrapper.sticky,
+        :host([collapsed]) #wrapper.sticky  {
           position: fixed;
           animation-name: slideInDown;
           animation-fill-mode: forwards;
@@ -220,7 +221,7 @@ export class Pho3nixHeader extends LitElement {
   protected render() {
    return html`
    <style>
-    ::slotted(a:nth-of-type(${this.selected + 1})) {
+    ::slotted(a:nth-of-type(${Number(this.selected) + 1})) {
         background-size: 2px;
         cursor: initial;
     }
